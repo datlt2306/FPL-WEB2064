@@ -27,7 +27,14 @@ const myInfo = {
 // function name
 console.log(sum(10, 20));
 function sum(a, b) {
-    return a + b;
+    // validate
+    if (typeof a !== "number" || typeof b !== "number") {
+        throw new Error("Lỗi: a và b phải là số");
+    }
+    // logic
+    const result = a + b;
+    // return
+    return result;
 }
 
 // function expression
@@ -42,6 +49,8 @@ const sum3 = (a, b) => {
 };
 console.log(sum3(10, 20));
 
+// lưu ý: Hàm có 3 phần: validate, logic, return
+// ================================================
 /**
 Bài 1 – Tính tổng tiền hàng
 	•	Viết hàm calculateTotal dưới dạng arrow function.
@@ -51,12 +60,21 @@ Bài 1 – Tính tổng tiền hàng
 
 // Giải bài 1 - Tính tổng tiền hàng
 const calculateTotal = (product) => {
+    // kiểm tra xem product có phải là 1 object không
+    if (typeof product !== "object") {
+        throw new Error("Lỗi: Product phải là 1 object");
+    }
+    // giá nó có phải số không? số lượng nó có phải số không?
+    if (typeof product.price !== "number" || typeof product.quantity !== "number") {
+        throw new Error("Lỗi: Giá và số lượng phải là số");
+    }
+
     return product.price * product.quantity;
 };
 
 // Test hàm calculateTotal
 const product1 = {
-    price: 100000,
+    price: 10000,
     quantity: 3,
 };
 

@@ -47,7 +47,27 @@ Bài 1 – Tính tổng tiền hàng
 	•	Viết hàm calculateTotal dưới dạng arrow function.
 	•	Hàm nhận vào một object có 2 thuộc tính: price (giá sản phẩm) và quantity (số lượng).
 	•	Trả về tổng tiền = price * quantity.
+ */
 
+// Giải bài 1 - Tính tổng tiền hàng
+const calculateTotal = (product) => {
+    return product.price * product.quantity;
+};
+
+// Test hàm calculateTotal
+const product1 = {
+    price: 100000,
+    quantity: 3,
+};
+
+const product2 = {
+    price: 50000,
+    quantity: 5,
+};
+
+console.log("Tổng tiền sản phẩm 1:", calculateTotal(product1)); // 300000
+console.log("Tổng tiền sản phẩm 2:", calculateTotal(product2)); // 250000
+/*
 ⸻
 
 Bài 2 – Tính giá sau khuyến mãi (Arrow Function + Object)

@@ -1,0 +1,15 @@
+{
+    "name": "chapter-02",
+    "version": "1.0.0",
+    "main": "main.js",
+    "scripts": {
+        "test": "vitest"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "devDependencies": {
+        "vitest": "^3.2.4"
+    }
+}

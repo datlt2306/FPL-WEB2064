@@ -25,10 +25,10 @@ console.log(`arrow function: ${sum3(10, 20)}`);
 
 Bài 1 – Tính tổng tiền hàng
 	•	Viết hàm calculateTotal dưới dạng arrow function.
+    •	Validate: giá truyền vào phải là 1 object, price và quantity phải là số
 	•	Hàm nhận vào một object có 2 thuộc tính: price (giá sản phẩm) và quantity (số lượng).
 	•	Trả về tổng tiền = price * quantity.
  */
-
 /*
 ⸻
 

@@ -32,7 +32,18 @@ let content = "";
 
 // forEach
 // syntax: array.forEach(function(variable, index){})
-todosListData.forEach(function (todo) {
-    content += `<li>${todo}</li>`;
-});
-listElement.innerHTML = content;
+// todosListData.forEach(function (todo) {
+//     content += `<li>${todo}</li>`;
+// });
+
+// map() -> tạo mảng mới từ mảng cũ và biến đổi theo yêu cầu
+// syntax: array.map(function(variable, index){})
+const newTodosListData = todosListData
+    .map(function (todo) {
+        return `<li>${todo}</li>`;
+    })
+    .join("");
+console.log("Mảng cũ", todosListData);
+console.log("Mảng mới", newTodosListData);
+// hiển thị
+listElement.innerHTML = newTodosListData;

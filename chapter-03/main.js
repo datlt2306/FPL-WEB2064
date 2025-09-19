@@ -34,11 +34,25 @@ let content = "";
 //     })
 //     .join("");
 // filter
-const newFriends = myFriends
-    .filter((friend) => friend !== "Huy")
-    .map((friend) => `<li>${friend}</li>`)
-    .join("");
+// const newFriends = myFriends
+//     .filter((friend) => friend !== "Huy")
+//     .map((friend) => `<li>${friend}</li>`)
+//     .join("");
 
-console.log("Mảng cũ", myFriends);
-console.log("Mảng mới", newFriends);
-listElement.innerHTML = newFriends;
+// console.log("Mảng cũ", myFriends);
+// console.log("Mảng mới", newFriends);
+// listElement.innerHTML = newFriends;
+// ================================================
+
+const todosListData = [
+    { id: 1, name: "Chơi game", completed: false },
+    { id: 2, name: "Học Javascript", completed: false },
+    { id: 3, name: "Học React", completed: false },
+    { id: 4, name: "Học NodeJS", completed: false },
+    { id: 5, name: "Học MongoDB", completed: false },
+    { id: 6, name: "Học MySQL", completed: false },
+    { id: 7, name: "Học PostgreSQL", completed: false },
+    { id: 8, name: "Học Redis", completed: false },
+];
+
+const todoList = document.getElementById("todoList");

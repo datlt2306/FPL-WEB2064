@@ -21,17 +21,45 @@ const sampleTodos = [
 
 class TodoApp {
     constructor() {
+        this.todos = sampleTodos;
         this.init();
+        this.bindEvents();
     }
     init() {
         this.render();
     }
+    bindEvents() {
+        const todoForm = document.getElementById("todo-form");
+        const input = document.getElementById("todo-input");
+
+        todoForm.addEventListener("submit", (e) => {
+            // chặn sự kiện reload trang
+            e.preventDefault();
+            const text = input.value.trim();
+            const todo = {
+                id: Date.now(),
+                text: text,
+                completed: false,
+                createdAt: new Date().toISOString(),
+            };
+
+            // thêm phần tử vào mảng
+
+            // hiển thị lại danh sách công việc
+            this.render();
+            input.value = "";
+            alert("Thêm công việc thành công");
+        });
+    }
     render() {
         const todoList = document.getElementById("todo-list");
-        todoList.innerHTML = sampleTodos.map((todo) => {
-            const isCompleted = todo.completed;
-            const createdAt = new Date(todo.createdAt).toLocaleDateString("vi-VN");
-            return `
+        todoList.innerHTML = this.todos.map((todo) => this.createTodoHTML(todo)).join("");
+    }
+    addTodo() {}
+    createTodoHTML(todo) {
+        const isCompleted = todo.completed;
+        const createdAt = new Date(todo.createdAt).toLocaleDateString("vi-VN");
+        return `
             <div class="todo-item bg-white rounded-lg shadow-md p-4 animate-slide-in ${
                 isCompleted ? "opacity-75" : ""
             }" data-id="${todo.id}">
@@ -85,7 +113,6 @@ class TodoApp {
                             </div>
                         </div>
                     </div>`;
-        });
     }
 }
 // Initialize the app

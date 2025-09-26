@@ -29,6 +29,13 @@ class TodoApp {
         this.render();
     }
     bindEvents() {
+        this.addTodo();
+    }
+    render() {
+        const todoList = document.getElementById("todo-list");
+        todoList.innerHTML = this.todos.map((todo) => this.createTodoHTML(todo)).join("");
+    }
+    addTodo() {
         const todoForm = document.getElementById("todo-form");
         const input = document.getElementById("todo-input");
 
@@ -44,18 +51,19 @@ class TodoApp {
             };
 
             // thêm phần tử vào mảng
-
+            this.todos.push(todo);
             // hiển thị lại danh sách công việc
             this.render();
             input.value = "";
             alert("Thêm công việc thành công");
         });
     }
-    render() {
-        const todoList = document.getElementById("todo-list");
-        todoList.innerHTML = this.todos.map((todo) => this.createTodoHTML(todo)).join("");
+    deleteTodo(id) {
+        const confirm = window.confirm("Are you sure you want to delete this todo?");
+        if (!confirm) return;
+        this.todos = this.todos.filter((todo) => todo.id !== id);
+        this.render();
     }
-    addTodo() {}
     createTodoHTML(todo) {
         const isCompleted = todo.completed;
         const createdAt = new Date(todo.createdAt).toLocaleDateString("vi-VN");
@@ -116,4 +124,4 @@ class TodoApp {
     }
 }
 // Initialize the app
-const todoApp = new TodoApp();
+window.todoApp = new TodoApp();

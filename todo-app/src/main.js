@@ -21,17 +21,40 @@ const sampleTodos = [
 
 class TodoApp {
     constructor() {
+        this.todos = sampleTodos;
         this.init();
     }
     init() {
+        this.bindEvents();
         this.render();
     }
-    render() {
-        const todoList = document.getElementById("todo-list");
-        todoList.innerHTML = sampleTodos.map((todo) => {
-            const isCompleted = todo.completed;
-            const createdAt = new Date(todo.createdAt).toLocaleDateString("vi-VN");
-            return `
+    bindEvents() {
+        const todoForm = document.getElementById("todo-form");
+        todoForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            this.addTodo();
+        });
+    }
+    addTodo() {
+        const todoInput = document.getElementById("todo-input");
+        const text = todoInput.value.trim();
+        if (text) {
+            const todo = {
+                id: this.todos.length + 1,
+                text: text,
+                completed: false,
+                createdAt: new Date().toISOString(),
+            };
+            // thêm todo vào danh sách
+            this.todos.push(todo);
+            // hiển thị lại danh sách todo sau khi thêm
+            this.render();
+        }
+    }
+    createTodoHTML(todo) {
+        const isCompleted = todo.completed;
+        const createdAt = new Date(todo.createdAt).toLocaleDateString("vi-VN");
+        return `
             <div class="todo-item bg-white rounded-lg shadow-md p-4 animate-slide-in ${
                 isCompleted ? "opacity-75" : ""
             }" data-id="${todo.id}">
@@ -85,7 +108,10 @@ class TodoApp {
                             </div>
                         </div>
                     </div>`;
-        });
+    }
+    render() {
+        const todoList = document.getElementById("todo-list");
+        todoList.innerHTML = this.todos.map((todo) => this.createTodoHTML(todo)).join("");
     }
 }
 // Initialize the app

@@ -49,3 +49,4 @@ btnElement.addEventListener("click", () => {
     localStorage.setItem("name", JSON.stringify(inputElement.value));
 });
 resultElement.innerHTML = JSON.parse(localStorage.getItem("name")) || "";
+// npm create vite@latest todo -- --template vanilla-js

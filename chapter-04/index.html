@@ -274,6 +274,8 @@
                     // Filter buttons
                     document.querySelectorAll(".filter-btn").forEach((btn) => {
                         btn.addEventListener("click", (e) => {
+                            console.log(e.target.id);
+                            console.log(e.target.id.replace("filter-", ""));
                             this.setFilter(e.target.id.replace("filter-", ""));
                         });
                     });
@@ -493,8 +495,8 @@
                 }
 
                 updateStats() {
-                    const total = this.todos.length;
-                    const completed = this.todos.filter((t) => t.completed).length;
+                    const total = this.todos.length; // 5
+                    const completed = this.todos.filter((t) => t.completed).length; // 2
                     const active = total - completed;
 
                     document.getElementById("total-todos").textContent = total;
@@ -563,21 +565,3 @@
         </script>
     </body>
 </html>
-
-<script>
-    class ConVat {
-        constructor(ten, keu) {
-            console.log(`${ten} đang ahihi ${keu}`);
-        }
-        keu() {
-            console.log("Con vật đang kêu");
-        }
-    }
-
-    const conMeo = new ConVat("Con mèo", "meomeo");
-
-    function conVat(ten, keu) {
-        console.log(`${ten} đang ${keu}`);
-    }
-    conVat("Con mèo", "meomeo");
-</script>

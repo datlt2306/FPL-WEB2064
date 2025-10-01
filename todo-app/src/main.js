@@ -21,7 +21,7 @@ const sampleTodos = [
 
 class TodoApp {
     constructor() {
-        this.todos = sampleTodos;
+        this.todos = this.loadTodos();
         this.init();
     }
     init() {
@@ -47,8 +47,12 @@ class TodoApp {
             };
             // thêm todo vào danh sách
             this.todos.push(todo);
+
+            // lưu dữ liệu vào localStorage
+            this.saveTodos();
             // hiển thị lại danh sách todo sau khi thêm
             this.render();
+            todoInput.value = "";
         }
     }
     createTodoHTML(todo) {
@@ -109,6 +113,19 @@ class TodoApp {
                         </div>
                     </div>`;
     }
+    deleteTodo(id) {
+        const newTodos = this.todos.filter((todo) => todo.id !== id);
+        this.todos = newTodos;
+        this.saveTodos();
+        this.render();
+    }
+    saveTodos() {
+        localStorage.setItem("todos", JSON.stringify(this.todos));
+    }
+    loadTodos() {
+        const todos = JSON.parse(localStorage.getItem("todos")) || [];
+        return todos;
+    }
     render() {
         const todoList = document.getElementById("todo-list");
         todoList.innerHTML = this.todos.map((todo) => this.createTodoHTML(todo)).join("");
@@ -116,3 +133,4 @@ class TodoApp {
 }
 // Initialize the app
 const todoApp = new TodoApp();
+window.todoApp = todoApp;

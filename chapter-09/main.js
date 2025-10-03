@@ -69,3 +69,35 @@ function showData(result) {
     console.log("Dữ liệu nhận được:", result);
 }
 getData(showData);
+
+// Ví dụ tiếp theo sử dụng callback
+// Bước 1: Lấy danh sách sinh viên
+function getStudents(callback) {
+    console.log("Đang lấy danh sách sinh viên...");
+    setTimeout(() => {
+        let students = ["An", "Bình", "Chi"];
+        callback(students);
+    }, 1000);
+}
+
+// Bước 2: Lấy điểm của 1 sinh viên
+function getScores(student, callback) {
+    console.log(`Đang lấy điểm cho ${student}...`);
+    setTimeout(() => {
+        let scores = { toan: 8, ly: 7, hoa: 9 };
+        callback(scores);
+    }, 1000);
+}
+
+// Bước 3: Hiển thị kết quả
+function showResult(student, scores) {
+    console.log(`Kết quả của ${student}:`, scores);
+}
+
+// Sử dụng callback để xử lý tuần tự
+getStudents(function (students) {
+    let firstStudent = students[0]; // Lấy sinh viên đầu tiên
+    getScores(firstStudent, function (scores) {
+        showResult(firstStudent, scores);
+    });
+});

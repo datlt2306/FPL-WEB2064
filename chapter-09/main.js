@@ -45,22 +45,39 @@
 //     // Giả lập chờ 2 giây
 //     setTimeout(function () {
 //         let data = "Danh sách sinh viên";
-//         callback(data); // gọi callback khi đã có dữ liệu
+//         callback(data);
 //     }, 2000);
 // }
 // // Sử dụng
-// getData(function (result) {
-//     console.log("Dữ liệu nhận được:", result);
+// getData((result) => {
+//     console.log(`Dữ liệu nhận được: ${result}`);
 // });
 
-function loadScript(src, callback) {
-    const script = document.createElement("script");
-    script.src = src;
-    script.onload = () => {
-        callback(script);
-    };
-    document.head.append(script);
-}
-loadScript("https://cdn.tailwindcss.com", function (script) {
-    console.log(script);
-});
+// function loadScript(src, callback) {
+//     const script = document.createElement("script");
+//     script.src = src;
+
+//     script.onload = () => callback(null, script);
+//     script.onerror = () => callback("Lỗi tải script");
+//     document.head.append(script);
+// }
+// loadScript("https://cdn.tailwindcss.com", (error, result) => {
+//     if (error) {
+//         console.log(error);
+//     } else {
+//         console.log(`Script 1 đã được tải: ${result.src}`);
+//         loadScript("https://javascript.info/callbacks", (error, result) => {
+//             if (error) {
+//                 console.log(error);
+//             } else {
+//                 loadScript("https://javascript.info/callbacks", (error, result) => {
+//                     if (error) {
+//                         console.log(error);
+//                     } else {
+//                         console.log(`Script 3 đã được tải: ${result.src}`);
+//                     }
+//                 });
+//             }
+//         });
+//     }
+// });

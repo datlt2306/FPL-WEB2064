@@ -53,31 +53,31 @@
 //     console.log(`Dữ liệu nhận được: ${result}`);
 // });
 
-// function loadScript(src, callback) {
-//     const script = document.createElement("script");
-//     script.src = src;
+function loadScript(src, callback) {
+    const script = document.createElement("script");
+    script.src = src;
 
-//     script.onload = () => callback(null, script);
-//     script.onerror = () => callback("Lỗi tải script");
-//     document.head.append(script);
-// }
-// loadScript("https://cdn.tailwindcss.com", (error, result) => {
-//     if (error) {
-//         console.log(error);
-//     } else {
-//         console.log(`Script 1 đã được tải: ${result.src}`);
-//         loadScript("https://javascript.info/callbacks", (error, result) => {
-//             if (error) {
-//                 console.log(error);
-//             } else {
-//                 loadScript("https://javascript.info/callbacks", (error, result) => {
-//                     if (error) {
-//                         console.log(error);
-//                     } else {
-//                         console.log(`Script 3 đã được tải: ${result.src}`);
-//                     }
-//                 });
-//             }
-//         });
-//     }
-// });
+    script.onload = () => callback(null, script);
+    script.onerror = () => callback("Lỗi tải script");
+    document.head.append(script);
+}
+loadScript("https://cdn.tailwindcss.com", (error, result) => {
+    if (error) {
+        console.log(error);
+    } else {
+        console.log(`Script 1 đã được tải: ${result.src}`);
+        loadScript("https://javascript.info/callbacks", (error, result) => {
+            if (error) {
+                console.log(error);
+            } else {
+                loadScript("https://javascript.info/callbacks", (error, result) => {
+                    if (error) {
+                        console.log(error);
+                    } else {
+                        console.log(`Script 3 đã được tải: ${result.src}`);
+                    }
+                });
+            }
+        });
+    }
+});

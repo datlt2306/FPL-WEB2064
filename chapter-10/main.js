@@ -84,3 +84,17 @@ cauHon()
             console.log("Trả dép bố về");
         }, 2000);
     });
+
+// GET | POST | PUT | DELETE
+
+fetch("https://6867d5c8d5933161d709fda8.mockapi.io/products")
+    .then((response) => {
+        // response trả về 1 object
+        // chuyển đổi thành json() => trả về 1 promise
+        return response.json();
+    })
+    .then((data) => {
+        // data trả về 1 mảng product
+        const productList = document.getElementById("productList");
+        productList.innerHTML = data.map((product) => `<li>${product.name}</li>`).join("");
+    });

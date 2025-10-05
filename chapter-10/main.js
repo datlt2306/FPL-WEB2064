@@ -35,10 +35,57 @@
 //     .catch((error) => console.log(error));
 
 // Fetch API
-fetch("https://jsonplaceholder.typicode.com/todos")
+fetch("https://6867d5c8d5933161d709fda8.mockapi.io/products")
     .then((response) => response.json())
     .then((data) => {
         const todosList = document.getElementById("todos");
-        const result = data.map((item) => `<li>${item.title}</li>`).join("");
+        const result = data.map((item) => `<li>${item.name}</li>`).join("");
         todosList.innerHTML = result;
     });
+
+// Xóa todo
+
+const deleteBtn = document.getElementById("delete-btn");
+deleteBtn.addEventListener("click", () => {
+    fetch("https://6867d5c8d5933161d709fda8.mockapi.io/products/2", { method: "DELETE" })
+        .then(() => alert("Xóa thành công"))
+        .catch(() => alert("Xóa thất bại"));
+});
+
+// Thêm sản phẩm
+const addBtn = document.getElementById("add-btn");
+addBtn.addEventListener("click", () => {
+    fetch("https://6867d5c8d5933161d709fda8.mockapi.io/products", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            name: "Fresh Wooden Shoes",
+            description: "Sản phẩm mới thêm",
+            price: "200.85",
+            image: "https://picsum.photos/seed/nsmRq3fr/3395/1888?grayscale&blur=3",
+        }),
+    })
+        .then(() => alert("Thêm sản phẩm thành công"))
+        .catch(() => alert("Xóa thất bại"));
+});
+
+// cập nhật
+const updateBtn = document.getElementById("update-btn");
+updateBtn.addEventListener("click", () => {
+    fetch("https://6867d5c8d5933161d709fda8.mockapi.io/products/26", {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            description: "Sản phẩm mới cập nhật",
+        }),
+    })
+        .then(() => {
+            console.log("Cập nhật sản phẩm thành công");
+        })
+
+        .catch(() => alert("Xóa thất bại"));
+});

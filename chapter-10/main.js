@@ -98,3 +98,54 @@ fetch("https://6867d5c8d5933161d709fda8.mockapi.io/products")
         const productList = document.getElementById("productList");
         productList.innerHTML = data.map((product) => `<li>${product.name}</li>`).join("");
     });
+
+/**
+ *
+ * GET /products => Lấy danh sách sản phẩm
+ * GET /products/:id => Lấy sản phẩm theo id
+ * POST /products => Thêm sản phẩm
+ * PUT /products/:id => Cập nhật sản phẩm
+ * DELETE /products/:id => Xóa sản phẩm
+ */
+const addBtn = document.getElementById("addProduct");
+addBtn.addEventListener("click", () => {
+    fetch("https://6867d5c8d5933161d709fda8.mockapi.io/products", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            name: "Sản phẩm vừa thêm",
+            description: "Mô tả sản phẩm vừa thêm",
+            price: "200.25",
+            image: "https://picsum.photos/seed/sxYH1hJpB/2117/2680?blur=2",
+        }),
+    })
+        .then(() => console.log("Thêm sản phẩm thành công"))
+        .catch(() => console.log("Thất bại!"));
+});
+
+// Xóa sản phẩm
+const deleteBtn = document.getElementById("deleteProduct");
+deleteBtn.addEventListener("click", () => {
+    fetch("https://6867d5c8d5933161d709fda8.mockapi.io/products/8", {
+        method: "DELETE",
+    })
+        .then(() => console.log("Xóa sản phẩm thành công"))
+        .catch(() => console.log("Thất bại!"));
+});
+// Xóa sản phẩm
+const updateBtn = document.getElementById("updateProduct");
+updateBtn.addEventListener("click", () => {
+    fetch("https://6867d5c8d5933161d709fda8.mockapi.io/products/7", {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            name: "Sản phẩm vừa cập nhật",
+        }),
+    })
+        .then(() => console.log("Cập nhật sản phẩm thành công"))
+        .catch(() => console.log("Thất bại!"));
+});

@@ -20,7 +20,7 @@ const render = () => {
                     <td>${item.name}</td>
                     <td>${item.price}</td>
                     <td>
-                        <button class="btn btn-primary">Sửa</button>
+                        <a href="./edit.html?id=${item.id}" class="btn btn-primary">Sửa</a>
                         <button class="btn btn-danger" onclick="deleteProduct(${
                             item.id
                         })">Xóa</button>

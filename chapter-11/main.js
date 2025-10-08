@@ -2,16 +2,49 @@ const productList = document.getElementById("productList");
 const API = `http://localhost:3001/products`;
 const axios = window.axios;
 const productForm = document.getElementById("product-form");
+const productFormEdit = document.getElementById("product-form-edit");
 
-productForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const product = {
-        name: document.getElementById("name").value,
-        price: document.getElementById("price").value,
-    };
-    addProduct(product);
-});
+const id = new URLSearchParams(window.location.search).get("id");
+if (id) {
+    axios.get(`${API}/${id}`).then((response) => {
+        document.getElementById("name").value = response.data.name;
+        document.getElementById("price").value = response.data.price;
+    });
+    productFormEdit.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const product = {
+            name: document.getElementById("name").value,
+            price: document.getElementById("price").value,
+        };
+        updateProduct(product);
+    });
+}
 
+if (productForm) {
+    productForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const product = {
+            name: document.getElementById("name").value,
+            price: document.getElementById("price").value,
+        };
+        addProduct(product);
+    });
+}
+
+const updateProduct = (product) => {
+    if (!product.name || !product.price) {
+        alert("Vui lòng nhập đầy đủ thông tin");
+        return;
+    }
+    axios
+        .put(`${API}/${id}`, product)
+        .then(() => {
+            // alert("Cập nhật sản phẩm thành công");
+            window.location.href = "./";
+        })
+        .catch(() => alert("Cập nhật sản phẩm thất bại"));
+    return;
+};
 const addProduct = (product) => {
     if (!product.name || !product.price) {
         alert("Vui lòng nhập đầy đủ thông tin");

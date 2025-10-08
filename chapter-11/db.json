@@ -1,5 +1,14 @@
 {
-  "products": [],
+  "products": [
+    {
+      "id": "64d7",
+      "name": "Sản phẩm 1",
+      "price": "100",
+      "quantity": "100",
+      "category": "1",
+      "imageUrl": "https://picsum.photos/300/300"
+    }
+  ],
   "users": [
     {
       "email": "admin@gmail.com",

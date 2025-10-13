@@ -25,12 +25,13 @@ if (id) {
 }
 if (userInfo) {
     const user = JSON.parse(localStorage.getItem("user"));
-    if (user) {
-        userInfo.innerHTML = `
+    if (!user) {
+        window.location.replace("./signin.html");
+    }
+    userInfo.innerHTML = `
         <span class="me-2">${user?.email}</span>
         <button class="btn btn-primary" onclick="logout()">Đăng xuất</button>
-    `;
-    }
+    }`;
 }
 if (productForm) {
     productForm.addEventListener("submit", (e) => {
@@ -65,7 +66,7 @@ if (signinForm) {
 }
 const logout = () => {
     localStorage.removeItem("user");
-    window.location.href = "./";
+    window.location.replace("./signin.html"); // hoặc './'
 };
 const signin = (user) => {
     if (!user.email || !user.password) {

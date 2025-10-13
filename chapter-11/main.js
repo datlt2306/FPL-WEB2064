@@ -5,8 +5,10 @@ const productForm = document.getElementById("product-form");
 const productFormEdit = document.getElementById("product-form-edit");
 const signupForm = document.getElementById("signup-form");
 const signinForm = document.getElementById("signin-form");
+const userInfo = document.getElementById("user-info");
 
 const id = new URLSearchParams(window.location.search).get("id");
+
 if (id) {
     axios.get(`${API}/${id}`).then((response) => {
         document.getElementById("name").value = response.data.name;
@@ -21,7 +23,15 @@ if (id) {
         updateProduct(product);
     });
 }
-
+if (userInfo) {
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (user) {
+        userInfo.innerHTML = `
+        <span class="me-2">${user?.email}</span>
+        <button class="btn btn-primary" onclick="logout()">Đăng xuất</button>
+    `;
+    }
+}
 if (productForm) {
     productForm.addEventListener("submit", (e) => {
         e.preventDefault();
@@ -53,6 +63,10 @@ if (signinForm) {
         signin(user);
     });
 }
+const logout = () => {
+    localStorage.removeItem("user");
+    window.location.href = "./";
+};
 const signin = (user) => {
     if (!user.email || !user.password) {
         alert("Vui lòng nhập đầy đủ thông tin");
@@ -60,7 +74,11 @@ const signin = (user) => {
     }
     axios
         .post(`${API}/login`, user)
-        .then(() => alert("Đăng nhập thành công"))
+        .then((response) => {
+            localStorage.setItem("user", JSON.stringify(response.data.user));
+            alert("Đăng nhập thành công");
+            window.location.href = "./";
+        })
         .catch(() => alert("Đăng nhập thất bại"));
 };
 const signup = (user) => {

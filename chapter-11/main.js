@@ -1,9 +1,10 @@
-const API = `http://localhost:3001/products`;
+const API = `http://localhost:3001`;
 const axios = window.axios;
 const productList = document.getElementById("productList");
 const productAddForm = document.getElementById("productAddForm");
 const productEditForm = document.getElementById("productEditForm");
-
+const signupForm = document.getElementById("signupForm");
+const signinForm = document.getElementById("signinForm");
 const idProduct = new URLSearchParams(window.location.search).get("id");
 if (idProduct) {
     // lấy id từ url và call API lấy dữ liệu sản phẩm theo id
@@ -28,10 +29,46 @@ if (productAddForm) {
         addProduct();
     });
 }
+if (signupForm) {
+    signupForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        signup();
+    });
+}
+if (signinForm) {
+    signinForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        signin();
+    });
+}
 
+const signup = () => {
+    axios
+        .post(`${API}/signup`, {
+            username: document.getElementById("username").value,
+            email: document.getElementById("email").value,
+            password: document.getElementById("password").value,
+        })
+        .then(() => {
+            console.log("Đăng ký thành công");
+            window.location.replace = "./signin.html";
+        })
+        .catch(() => console.log("Thất bại!"));
+};
+const signin = () => {
+    axios
+        .post(`${API}/signin`, {
+            email: document.getElementById("email").value,
+            password: document.getElementById("password").value,
+        })
+        .then(() => {
+            console.log("Đăng nhập thành công");
+        })
+        .catch(() => console.log("Thất bại!"));
+};
 const updateProduct = () => {
     axios
-        .put(`${API}/${idProduct}`, {
+        .put(`${API}/products/${idProduct}`, {
             name: document.getElementById("name").value,
             price: document.getElementById("price").value,
             quantity: document.getElementById("quantity").value,
@@ -47,7 +84,7 @@ const updateProduct = () => {
 const addProduct = () => {
     // call API thêm sản phẩm
     axios
-        .post(`${API}`, {
+        .post(`${API}/products/`, {
             name: document.getElementById("name").value,
             price: document.getElementById("price").value,
             quantity: document.getElementById("quantity").value,
@@ -64,14 +101,14 @@ const deleteProduct = (id) => {
     const confirm = window.confirm("Bạn có chắc chắn muốn xóa sản phẩm này không?");
     if (!confirm) return;
     axios
-        .delete(`${API}/${id}`)
+        .delete(`${API}/products/${id}`)
         .then(() => console.log("Xóa sản phẩm thành công"))
         .catch(() => console.log("Thất bại!"));
 };
 const renderProduct = () => {
     // lấy danh sách sản phẩm
 
-    axios.get(API).then((response) => {
+    axios.get(`${API}/products`).then((response) => {
         if (!productList) return;
         productList.innerHTML = response.data
             .map(

@@ -12,9 +12,15 @@
   "users": [
     {
       "email": "admin@gmail.com",
-      "password": "$2a$10$0PGbJ7CqHLY0V7MYJs.6euXWbIB.TsBW/1CjE1B54eOLMfhI7a7eq",
-      "name": "admin",
-      "id": "1"
+      "password": "$2a$10$piID.hgkKiXlNorFahuEC.fmWNG.gHwWoq472Zhp4GmOEifErf8vy",
+      "username": "admin",
+      "id": 1
+    },
+    {
+      "email": "member@gmail.com",
+      "password": "$2a$10$dod.JzvDlgVzaZsdG6Z78.6Z1YVYI6uNMHUeeCUh1QJL5MMG5Yuym",
+      "username": "member",
+      "id": 2
     }
   ]
 }

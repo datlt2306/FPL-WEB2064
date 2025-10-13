@@ -5,7 +5,20 @@ const productAddForm = document.getElementById("productAddForm");
 const productEditForm = document.getElementById("productEditForm");
 const signupForm = document.getElementById("signupForm");
 const signinForm = document.getElementById("signinForm");
+const userInfo = document.getElementById("user-info");
+
 const idProduct = new URLSearchParams(window.location.search).get("id");
+
+if (userInfo) {
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (!user) {
+        window.location.replace("./signin.html");
+    }
+    userInfo.innerHTML = `
+            <span class="me-2" id="user">${user.email}</span>
+            <button class="btn btn-primary" onclick="logout()">Đăng xuất</button>
+    `;
+}
 if (idProduct) {
     // lấy id từ url và call API lấy dữ liệu sản phẩm theo id
     axios.get(`${API}/${idProduct}`).then((data) => {
@@ -42,6 +55,10 @@ if (signinForm) {
     });
 }
 
+const logout = () => {
+    localStorage.removeItem("user");
+    window.location.replace("./signin.html");
+};
 const signup = () => {
     axios
         .post(`${API}/signup`, {
@@ -61,8 +78,10 @@ const signin = () => {
             email: document.getElementById("email").value,
             password: document.getElementById("password").value,
         })
-        .then(() => {
-            console.log("Đăng nhập thành công");
+        .then((response) => {
+            console.log(response.data.user);
+            localStorage.setItem("user", JSON.stringify(response.data.user));
+            window.location.replace("./index.html");
         })
         .catch(() => console.log("Thất bại!"));
 };
@@ -133,3 +152,4 @@ const renderProduct = () => {
     });
 };
 renderProduct();
+// npm i -D json-server@0.17.4 json-server-auth

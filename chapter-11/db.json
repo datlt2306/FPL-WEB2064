@@ -1,14 +1,6 @@
 {
   "products": [
     {
-      "id": "64d7",
-      "name": "Sản phẩm 1",
-      "price": "100",
-      "quantity": "100",
-      "categoryId": "1",
-      "imageUrl": "https://picsum.photos/id/1/300/300"
-    },
-    {
       "id": "6f92",
       "name": "Sản phẩm 2",
       "price": "200",
@@ -159,6 +151,30 @@
       "quantity": "101",
       "categoryId": "2",
       "imageUrl": "https://picsum.photos/id/20/300/300"
+    },
+    {
+      "name": "Sản phẩm vừa thêm 1",
+      "quantity": 100,
+      "price": 100,
+      "imageUrl": "https://picsum.photos/300/300",
+      "categoryId": "3",
+      "id": "h3q5ouZ"
+    },
+    {
+      "name": "Sản phẩm vừa thêm 2",
+      "quantity": 200,
+      "price": 200,
+      "imageUrl": "https://picsum.photos/300/300",
+      "categoryId": "2",
+      "id": "ySZ5t8T"
+    },
+    {
+      "name": "Sản phẩm vừa thêm 3 update",
+      "quantity": 300,
+      "price": 300,
+      "imageUrl": "https://picsum.photos/300/300",
+      "categoryId": "1",
+      "id": "dcoz-LT"
     }
   ],
   "categories": [
@@ -178,7 +194,7 @@
   "users": [
     {
       "email": "admin@gmail.com",
-      "password": "$2a$10$du344NgCeI1UrspqXjv4x.YSCBUlyEdrG8Zl8AlG1YGfQR6AdtcNe",
+      "password": "$2a$10$of.29dou4DiPDcYmrql/6.9axdfJgisLBjOu43NU/agqwIHW/2cbi",
       "username": "admin",
       "id": 1
     }

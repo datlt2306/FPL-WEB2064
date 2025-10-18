@@ -17,7 +17,7 @@
                 <h2>Cập nhật sản phẩm</h2>
                 <a href="./index.html" class="btn btn-primary">Quay lại</a>
             </div>
-            <form id="productEditForm">
+            <form id="productEditForm" onsubmit="updateProduct(event)">
                 <div class="mb-3">
                     <label for="name" class="form-label">Tên sản phẩm</label>
                     <input type="text" class="form-control" id="name" name="name" />
@@ -45,9 +45,7 @@
                     <label for="image" class="form-label">Hình ảnh</label>
                     <input type="text" class="form-control" id="image" name="image" />
                 </div>
-                <button type="button" onclick="updateProduct()" class="btn btn-primary">
-                    Cập nhật sản phẩm
-                </button>
+                <button type="submit" class="btn btn-primary">Cập nhật sản phẩm</button>
             </form>
         </div>
         <script
@@ -57,23 +55,6 @@
         ></script>
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-        <script src="./quick-main.js"></script>
-        <!-- 
-            Bước 1: Tạo giao diện thêm sản phẩm
-            Bước 2: Tạo form thêm sản phẩm
-            Bước 3: Lấy id từ url
-            Bước 4: Lấy dữ liệu sản phẩm theo id
-            Bước 5: Hiển thị dữ liệu sản phẩm lên form
-            Bước 6: Lấy giá trị từ form
-                - Bắt sự kiện submit form (submit)
-                - Lấy giá trị từ form (name, price, quantity, category, image).value
-                - Tạo object dữ liệu
-            Bước 7: Gửi dữ liệu lên server (fetch)
-                - Gửi dữ liệu lên server (POST)
-                - Hiển thị thông báo thành công
-                - Chuyển hướng về trang danh sách sản phẩm
-            Bước 8: Hiển thị thông báo thành công
-            Bước 9: Chuyển hướng về trang danh sách sản phẩm
-         -->
+        <script src="./main.js"></script>
     </body>
 </html>

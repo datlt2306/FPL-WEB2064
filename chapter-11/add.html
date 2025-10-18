@@ -45,7 +45,9 @@
                     <label for="image" class="form-label">Hình ảnh</label>
                     <input type="text" class="form-control" id="image" name="image" />
                 </div>
-                <button type="submit" class="btn btn-primary">Thêm sản phẩm</button>
+                <button type="button" onclick="addProduct()" class="btn btn-primary">
+                    Thêm sản phẩm
+                </button>
             </form>
         </div>
         <script
@@ -54,7 +56,7 @@
             crossorigin="anonymous"
         ></script>
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-        <script src="./main.js"></script>
+        <script src="./quick-main.js"></script>
         <!-- 
             Bước 1: Tạo giao diện thêm sản phẩm
             Bước 2: Tạo form thêm sản phẩm

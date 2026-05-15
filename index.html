@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo List Cơ Bản</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body class="min-h-screen bg-slate-100 p-4 text-slate-900 sm:p-8">
+    <main class="mx-auto w-full max-w-2xl rounded-2xl bg-white p-5 shadow-sm sm:p-6">
+      <h1 class="mb-1 text-2xl font-bold">Todo list cơ bản</h1>
+      <p class="mb-5 text-sm text-slate-600">Tailwind + JavaScript thuần (không lưu trữ)</p>
+
+      <form id="todo-form" class="mb-2 flex flex-col gap-3 sm:flex-row sm:items-start">
+        <div class="w-full">
+          <label for="todo-input" class="mb-1 block text-sm font-medium text-slate-700">Nội dung công việc</label>
+          <input
+            id="todo-input"
+            name="todo"
+            type="text"
+            placeholder="Ví dụ: Làm bài tập JavaScript"
+            class="w-full rounded-lg border border-slate-300 px-3 py-2 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
+            aria-describedby="todo-error"
+          />
+          <p id="todo-error" class="mt-1 min-h-5 text-sm text-red-600" role="alert" aria-live="polite"></p>
+        </div>
+        <button
+          type="submit"
+          class="rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300"
+          aria-label="Thêm công việc"
+        >
+          Thêm
+        </button>
+      </form>
+
+      <div class="mb-3 rounded-lg bg-slate-50 px-3 py-2 text-sm text-slate-700">
+        Đã hoàn thành: <span id="completed-count" class="font-semibold">0</span>/<span id="total-count" class="font-semibold">0</span>
+      </div>
+
+      <ul id="todo-list" class="space-y-2"></ul>
+    </main>
+
+    <script src="./app.js" defer></script>
+  </body>
+</html>

@@ -17,7 +17,8 @@ expressionFunc(10, 20);
 const arrowFunc = (a, b) => console.log(a + b);
 arrowFunc(10, 20);
 
-
+// Invoke function
+((a, b) => console.log(a + b))(20, 10)
 
 // map();
 const numbers = [1, 2, 3, 4, 5];
@@ -30,9 +31,7 @@ console.log(newNumber); // [2,4,6,8,10]
 
 // FIlter
 const friends = ['Kien', 'Nam', 'Minh', 'Thang'];
-const newFriends = friends.filter(function (name) {
-    return name !== 'Nam';
-});
+const newFriends = friends.filter((name) => name !== 'Nam');
 console.log(friends);
 console.log(newFriends);
 
@@ -46,9 +45,7 @@ const todos = [
     },
     { id: 3, name: "HTML/CSS" }
 ];
-const itemFound = todos.find(function (item) {
-    return item.id == 3;
-});
+const itemFound = todos.find((item) => item.id == 3);
 console.log(itemFound);
 
 // tính tổng giá sản phẩm trong giỏ hàng
@@ -58,9 +55,5 @@ const cartItem = [
     { id: 2, name: "Mouse", price: 200, quantity: 2 }, // item
     { id: 3, name: "Keyboard", price: 300, quantity: 1 } // item
 ];
-
-const resultCart = cartItem.reduce(function (ketqua, item) {
-    return ketqua + (item.price * item.quantity)
-}, 0);
-
+const resultCart = cartItem.reduce((ketqua, item) => ketqua + (item.price * item.quantity), 0);
 console.log("resultCart", resultCart);

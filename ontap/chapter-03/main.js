@@ -92,5 +92,6 @@ console.log("resultCart", resultCart);
 // Tìm hiểu: map, filter,find, reduce, some, every,
 // Cho ít nhất 1 ví dụ về từng cái
 
+//
 
 

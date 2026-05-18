@@ -1,0 +1,161 @@
+const dataProducts = [
+    {
+        id: 1,
+        name: "Apple iPhone 15 Pro Max 256GB",
+        price: 29500000,
+        inStock: 45,
+        variant: 4,
+        category: "Điện tử",
+        sku: "APP-IP15P-256",
+        status: "active",
+        image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=300&h=300&fit=crop"
+    },
+    {
+        id: 2,
+        name: "Samsung Galaxy S24 Ultra 512GB",
+        price: 31900000,
+        inStock: 32,
+        variant: 3,
+        category: "Điện tử",
+        sku: "SAM-S24U-512",
+        status: "active",
+        image: "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=300&h=300&fit=crop"
+    },
+    {
+        id: 3,
+        name: "Tai nghe chống ồn Sony WH-1000XM5",
+        price: 8450000,
+        inStock: 8,
+        variant: 2,
+        category: "Âm thanh",
+        sku: "SNY-WH1000-B",
+        status: "low_stock",
+        image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=300&h=300&fit=crop"
+    },
+    {
+        id: 4,
+        name: "Chuột không dây Logitech MX Master 3S",
+        price: 2450000,
+        inStock: 0,
+        variant: 2,
+        category: "Phụ kiện",
+        sku: "LOG-MX3S-GRY",
+        status: "out_of_stock",
+        image: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=300&h=300&fit=crop"
+    },
+    {
+        id: 5,
+        name: "Apple MacBook Pro 16 M3 Max",
+        price: 89990000,
+        inStock: 15,
+        variant: 2,
+        category: "Điện tử",
+        sku: "APP-MBP16-M3M",
+        status: "active",
+        image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=300&h=300&fit=crop"
+    },
+    {
+        id: 6,
+        name: "Bàn phím cơ không dây Keychron Q1 Pro",
+        price: 4850000,
+        inStock: 5,
+        variant: 3,
+        category: "Phụ kiện",
+        sku: "KEY-Q1P-RGB",
+        status: "low_stock",
+        image: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=300&h=300&fit=crop"
+    },
+    {
+        id: 7,
+        name: "Loa Bluetooth Marshall Stanmore III",
+        price: 9890000,
+        inStock: 20,
+        variant: 3,
+        category: "Âm thanh",
+        sku: "MAR-STAN3-BLK",
+        status: "active",
+        image: "https://images.unsplash.com/photo-1545454675-3531b543be5d?w=300&h=300&fit=crop"
+    },
+    {
+        id: 8,
+        name: "Đồng hồ Apple Watch Series 9 45mm",
+        price: 11200000,
+        inStock: 50,
+        variant: 5,
+        category: "Điện tử",
+        sku: "APP-W9-45M",
+        status: "active",
+        image: "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=300&h=300&fit=crop"
+    },
+    {
+        id: 9,
+        name: "Balo công nghệ Peak Design Everyday 20L",
+        price: 7500000,
+        inStock: 12,
+        variant: 3,
+        category: "Phụ kiện",
+        sku: "PEK-ED20-ASH",
+        status: "active",
+        image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=300&h=300&fit=crop"
+    },
+    {
+        id: 10,
+        name: "Màn hình đồ họa Dell UltraSharp 27 4K",
+        price: 15490000,
+        inStock: 0,
+        variant: 1,
+        category: "Điện tử",
+        sku: "DEL-U2723QE",
+        status: "out_of_stock",
+        image: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=300&h=300&fit=crop"
+    }
+];
+const productListEl = document.getElementById('product-table-body');
+
+
+const showProducts = (data) => {
+    productListEl.innerHTML = data.map((item, index) => {
+        return `<tr class="hover:bg-slate-50/80 transition-colors group">
+                        <td class="w-4 p-4">
+                            <div class="flex items-center">
+                                <input type="checkbox" class="w-4 h-4 text-primary-600 bg-white border-slate-300 rounded focus:ring-primary-500 focus:ring-2 cursor-pointer transition-colors hover:border-primary-400">
+                            </div>
+                        </td>
+                        <th scope="row" class="px-6 py-4 flex items-center gap-4 whitespace-nowrap">
+                            <div class="relative w-12 h-12 rounded-lg border border-slate-200/80 shadow-sm overflow-hidden bg-slate-100 shrink-0 flex items-center justify-center text-slate-300">
+                                <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" src="${item.image}" alt="product.name" onerror="this.style.display='none'">
+                            </div>
+                            <div>
+                                <div class="text-sm font-semibold text-slate-900 group-hover:text-primary-600 transition-colors cursor-pointer">${item.name}</div>
+                                <div class="text-xs text-slate-500 mt-0.5">SKU: ${item.sku}</div>
+                            </div>
+                        </th>
+                        <td class="px-6 py-4">
+                            <span class="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-slate-100 text-slate-600 border border-slate-200">
+                                ${item.category}
+                            </span>
+                        </td>
+                        <td class="px-6 py-4 font-medium text-slate-900">
+                           ${item.price} VNĐ
+                        </td>
+                        <td class="px-6 py-4">
+                            <div class="flex flex-col">
+                                <span class="text-amber-600 font-medium">${item.inStock}</span>
+                                <span class="text-xs text-slate-500">${item.variant} phiên bản</span>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4">
+                            123
+                        </td>
+                        <td class="px-6 py-4 text-right whitespace-nowrap">
+                            <button class="text-slate-400 hover:text-primary-600 p-1.5 rounded-md hover:bg-primary-50 transition-colors inline-flex" title="Chỉnh sửa">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
+                            </button>
+                            <button class="text-slate-400 hover:text-red-600 p-1.5 rounded-md hover:bg-red-50 transition-colors inline-flex ml-1" title="Xóa">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                            </button>
+                        </td>
+                    </tr>`
+    }).join("")
+}
+showProducts(dataProducts);

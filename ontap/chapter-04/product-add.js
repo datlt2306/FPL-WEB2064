@@ -64,9 +64,15 @@ form.addEventListener('submit', (e) => {
         status: status,
         image: imageUrl || defaultImage
     };
-
-    // Thêm vào danh sách và lưu vào localStorage
-    products.push(newProduct);
+    // call api
+    fetch('http://localhost:3000/products', {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(newProduct)
+    })
+    // products.push(newProduct);
     localStorage.setItem('products', JSON.stringify(products));
 
     // Thông báo và chuyển hướng

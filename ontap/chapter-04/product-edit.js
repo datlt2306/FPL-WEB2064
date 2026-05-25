@@ -6,10 +6,10 @@ const sidebarCountEl = document.getElementById('sidebar-total-count');
 if (sidebarCountEl) {
     sidebarCountEl.textContent = products.length;
 }
-
+// http://127.0.0.1:5500/ontap/chapter-04/product-edit.html?id=3
 // Lấy ID sản phẩm từ URL
 const urlParams = new URLSearchParams(window.location.search);
-const productId = parseInt(urlParams.get('id'));
+const productId = urlParams.get('id');
 
 if (isNaN(productId)) {
     alert('ID sản phẩm không hợp lệ!');
@@ -18,8 +18,7 @@ if (isNaN(productId)) {
 
 // Tìm sản phẩm tương ứng
 const product = products.find(p => p.id === productId);
-
-if (!product) {
+    if (!product) {
     alert('Không tìm thấy sản phẩm cần chỉnh sửa!');
     window.location.href = './product.html';
 }
@@ -77,18 +76,29 @@ form.addEventListener('submit', (e) => {
     } else if (stock <= 5) {
         status = 'low_stock';
     }
+    // call api => gọi server
+    const editProduct = {
+        id: productId,
+        name: name,
+        price: price,
+        inStock: stock,
+        variant: 1, // mặc định sản phẩm mới có 1 phiên bản
+        category: category,
+        sku: sku,
+        status: status,
+        image: imageUrl || defaultImage
+    }
 
-    // Cập nhật thông tin sản phẩm
-    product.name = name;
-    product.sku = sku;
-    product.category = category;
-    product.price = price;
-    product.inStock = stock;
-    product.status = status;
-    product.image = imageUrl || defaultImage;
+    fetch(`http://localhost:3000/products/${productId}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(editProduct)
+    })
 
     // Lưu lại danh sách vào localStorage
-    localStorage.setItem('products', JSON.stringify(products));
+    // localStorage.setItem('products', JSON.stringify(products));
 
     // Thông báo và chuyển hướng
     alert('Cập nhật sản phẩm thành công!');

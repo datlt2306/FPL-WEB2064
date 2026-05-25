@@ -1,128 +1,17 @@
-const defaultProducts = [
-    {
-        id: 1,
-        name: "Apple iPhone 15 Pro Max 256GB",
-        price: 29500000,
-        inStock: 45,
-        variant: 4,
-        category: "Điện tử",
-        sku: "APP-IP15P-256",
-        status: "active",
-        image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=300&h=300&fit=crop"
-    },
-    {
-        id: 2,
-        name: "Samsung Galaxy S24 Ultra 512GB",
-        price: 31900000,
-        inStock: 32,
-        variant: 3,
-        category: "Điện tử",
-        sku: "SAM-S24U-512",
-        status: "active",
-        image: "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=300&h=300&fit=crop"
-    },
-    {
-        id: 3,
-        name: "Tai nghe chống ồn Sony WH-1000XM5",
-        price: 8450000,
-        inStock: 8,
-        variant: 2,
-        category: "Âm thanh",
-        sku: "SNY-WH1000-B",
-        status: "low_stock",
-        image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=300&h=300&fit=crop"
-    },
-    {
-        id: 4,
-        name: "Chuột không dây Logitech MX Master 3S",
-        price: 2450000,
-        inStock: 0,
-        variant: 2,
-        category: "Phụ kiện",
-        sku: "LOG-MX3S-GRY",
-        status: "out_of_stock",
-        image: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=300&h=300&fit=crop"
-    },
-    {
-        id: 5,
-        name: "Apple MacBook Pro 16 M3 Max",
-        price: 89990000,
-        inStock: 15,
-        variant: 2,
-        category: "Điện tử",
-        sku: "APP-MBP16-M3M",
-        status: "active",
-        image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=300&h=300&fit=crop"
-    },
-    {
-        id: 6,
-        name: "Bàn phím cơ không dây Keychron Q1 Pro",
-        price: 4850000,
-        inStock: 5,
-        variant: 3,
-        category: "Phụ kiện",
-        sku: "KEY-Q1P-RGB",
-        status: "low_stock",
-        image: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=300&h=300&fit=crop"
-    },
-    {
-        id: 7,
-        name: "Loa Bluetooth Marshall Stanmore III",
-        price: 9890000,
-        inStock: 20,
-        variant: 3,
-        category: "Âm thanh",
-        sku: "MAR-STAN3-BLK",
-        status: "active",
-        image: "https://images.unsplash.com/photo-1545454675-3531b543be5d?w=300&h=300&fit=crop"
-    },
-    {
-        id: 8,
-        name: "Đồng hồ Apple Watch Series 9 45mm",
-        price: 11200000,
-        inStock: 50,
-        variant: 5,
-        category: "Điện tử",
-        sku: "APP-W9-45M",
-        status: "active",
-        image: "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=300&h=300&fit=crop"
-    },
-    {
-        id: 9,
-        name: "Balo công nghệ Peak Design Everyday 20L",
-        price: 7500000,
-        inStock: 12,
-        variant: 3,
-        category: "Phụ kiện",
-        sku: "PEK-ED20-ASH",
-        status: "active",
-        image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=300&h=300&fit=crop"
-    },
-    {
-        id: 10,
-        name: "Màn hình đồ họa Dell UltraSharp 27 4K",
-        price: 15490000,
-        inStock: 0,
-        variant: 1,
-        category: "Điện tử",
-        sku: "DEL-U2723QE",
-        status: "out_of_stock",
-        image: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=300&h=300&fit=crop"
-    }
-];
-
-// Khởi tạo localStorage nếu chưa có
-if (!localStorage.getItem('products')) {
-    localStorage.setItem('products', JSON.stringify(defaultProducts));
-}
-
-let products = JSON.parse(localStorage.getItem('products'));
+fetch(`http://localhost:3000/products`)
+    .then(response => response.json())
+    .then(data => {
+        localStorage.setItem('products', JSON.stringify(data));
+    });
+// CALL API
+let products = JSON.parse(localStorage.getItem('products')) || [];
 const productListEl = document.getElementById('product-table-body');
 
 // Hàm hiển thị sản phẩm
 const showProducts = (data) => {
+    // data => []
     // Cập nhật số lượng đếm trên giao diện
-    const totalCount = data.length;
+    const totalCount = data.length; // 10
     const sidebarCountEl = document.getElementById('sidebar-total-count');
     const totalItemsEl = document.getElementById('total-items-count');
     const currentItemsEl = document.getElementById('current-items-count');
@@ -218,7 +107,11 @@ const showProducts = (data) => {
 // Hàm xóa sản phẩm
 window.deleteProduct = function (id) {
     if (confirm("Bạn có chắc chắn muốn xóa sản phẩm này không?")) {
-        products = products.filter(item => item.id !== id);
+        // call api 
+        fetch(`http://localhost:3000/products/${id}`, {
+            method: "DELETE"
+        });
+        products = products.filter(item => item.id != id);
         localStorage.setItem('products', JSON.stringify(products));
         showProducts(products);
     }
@@ -226,3 +119,4 @@ window.deleteProduct = function (id) {
 
 // Thực thi hiển thị lần đầu
 showProducts(products);
+

@@ -1,0 +1,70 @@
+{
+  "products": [
+    {
+      "id": "6",
+      "name": "Tai nghe Sony WH-1000XM5 update",
+      "price": 7990000,
+      "inStock": 25,
+      "variant": 1,
+      "category": "Phụ kiện",
+      "sku": "SONY-WHXM5",
+      "status": "active",
+      "image": "https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?w=300&h=300&fit=crop"
+    },
+    {
+      "id": "7",
+      "name": "Apple Watch Series 9 GPS 41mm",
+      "price": 9500000,
+      "inStock": 40,
+      "variant": 3,
+      "category": "Điện tử",
+      "sku": "APP-W9-41",
+      "status": "active",
+      "image": "https://images.unsplash.com/photo-1434493789847-2f02dc6ca35d?w=300&h=300&fit=crop"
+    },
+    {
+      "id": "8",
+      "name": "Bàn phím cơ Logitech MX Mechanical",
+      "price": 3800000,
+      "inStock": 60,
+      "variant": 2,
+      "category": "Phụ kiện",
+      "sku": "LOGI-MXM",
+      "status": "active",
+      "image": "https://images.unsplash.com/photo-1595225476474-87563907a212?w=300&h=300&fit=crop"
+    },
+    {
+      "id": "9",
+      "name": "Chuột Logitech MX Master 3S",
+      "price": 2500000,
+      "inStock": 80,
+      "variant": 1,
+      "category": "Phụ kiện",
+      "sku": "LOGI-MX3S",
+      "status": "active",
+      "image": "https://images.unsplash.com/photo-1586816879360-004f5b0c51e3?w=300&h=300&fit=crop"
+    },
+    {
+      "id": "10",
+      "name": "iPad Pro 11-inch M4 Wi-Fi 256GB",
+      "price": 28990000,
+      "inStock": 35,
+      "variant": 2,
+      "category": "Máy tính bảng",
+      "sku": "APP-IPADM4-256",
+      "status": "active",
+      "image": "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=300&h=300&fit=crop"
+    },
+    {
+      "id": 11,
+      "name": "sản phẩm mới 1",
+      "price": 12321,
+      "inStock": 123,
+      "variant": 1,
+      "category": "Âm thanh",
+      "sku": "123457",
+      "status": "active",
+      "image": "https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=300&h=200&fit=crop"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="form">
+        <input type="text" placeholder="Ten" id="name">
+        <input type="number" placeholder="Gia" id="price">
+        <button type="submit">Them</button>
+    </form>
+
+    <script>
+        const form = document.querySelector('#form');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // tao object
+            const product = {
+                name: document.querySelector('#name').value,
+                price: document.querySelector('#price').value,
+            };
+            // call api
+            fetch(`http://localhost:3000/products`, {
+                method:"POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(product)
+            }).then(() => alert(`Theem thanh cong`))
+            
+        })
+    </script>
+</body>
+</html>

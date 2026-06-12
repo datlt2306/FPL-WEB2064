@@ -1,0 +1,16 @@
+{
+  "products": [
+    {
+      "name": "123123 update",
+      "price": "12321",
+      "id": 1
+    }
+  ],
+  "users": [
+    {
+      "email": "admin@gmail.com",
+      "password": "$2a$10$29x1WZg3kdS66NTD36oBVegCdmOnWlq.r90pm0eMCKoH9VYSsOaq6",
+      "id": 1
+    }
+  ]
+}

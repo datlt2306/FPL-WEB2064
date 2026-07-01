@@ -1,0 +1,257 @@
+<html lang="vi"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Task Manager - To-Do App</title>
+    <!-- Google Fonts: Inter & Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Outfit:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="./main.css">
+</head>
+<body>
+    <div class="app-background"></div>
+    <div class="app-container">
+        <!-- SIDEBAR: Thống kê & Bộ lọc -->
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-logo">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="check-square" aria-hidden="true" class="lucide lucide-check-square"><path d="M21 10.656V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h12.344"></path><path d="m9 11 3 3L22 4"></path></svg>
+                </div>
+                <h2>ZenTask</h2>
+            </div>
+            
+            <div class="user-profile">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&amp;auto=format&amp;fit=crop&amp;q=80" alt="Avatar" class="avatar">
+                <div class="user-info">
+                    <span class="user-name">Lê Trọng Đạt</span>
+                    <span class="user-role">Giảng viên / Developer</span>
+                </div>
+            </div>
+
+            <nav class="nav-filters">
+                <span class="nav-title">Phân loại</span>
+                <button class="nav-item active">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="list-todo" aria-hidden="true" class="lucide lucide-list-todo"><path d="M13 5h8"></path><path d="M13 12h8"></path><path d="M13 19h8"></path><path d="m3 17 2 2 4-4"></path><rect x="3" y="4" width="6" height="6" rx="1"></rect></svg>
+                    <span>Tất cả</span>
+                    <span class="badge">4</span>
+                </button>
+                <button class="nav-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="clock" aria-hidden="true" class="lucide lucide-clock"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
+                    <span>Chờ xử lý</span>
+                    <span class="badge warning">2</span>
+                </button>
+                <button class="nav-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="check-circle-2" aria-hidden="true" class="lucide lucide-check-circle-2"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg>
+                    <span>Đã hoàn thành</span>
+                    <span class="badge success">2</span>
+                </button>
+            </nav>
+
+            <div class="priority-filters">
+                <span class="nav-title">Độ ưu tiên</span>
+                <button class="priority-item">
+                    <span class="dot priority-high"></span>
+                    <span>Ưu tiên cao</span>
+                </button>
+                <button class="priority-item">
+                    <span class="dot priority-medium"></span>
+                    <span>Ưu tiên trung bình</span>
+                </button>
+                <button class="priority-item">
+                    <span class="dot priority-low"></span>
+                    <span>Ưu tiên thấp</span>
+                </button>
+            </div>
+
+            <!-- Stats Widget -->
+            <div class="stats-widget">
+                <div class="stats-header">
+                    <span>Tiến độ tuần này</span>
+                    <strong>50%</strong>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar-fill" style="width: 50%;"></div>
+                </div>
+                <p class="stats-desc">Hoàn thành 2 trong số 4 công việc của bạn.</p>
+            </div>
+        </aside>
+
+        <!-- MAIN PANEL: Thêm công việc & Danh sách -->
+        <main class="main-panel">
+            
+            <!-- Top bar: Search & Actions -->
+            <header class="top-bar">
+                <div class="search-box">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="search" aria-hidden="true" class="lucide lucide-search"><path d="m21 21-4.34-4.34"></path><circle cx="11" cy="11" r="8"></circle></svg>
+                    <input type="text" id="tim-kiem" placeholder="Tìm kiếm công việc theo từ khóa...">
+                </div>
+                <button class="btn-theme-toggle" title="Đổi giao diện Sáng/Tối">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="moon" aria-hidden="true" class="lucide lucide-moon"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"></path></svg>
+                </button>
+            </header>
+
+            <!-- Add Task Form -->
+            <section class="task-form-section">
+                <div class="section-header">
+                    <h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="plus-circle" aria-hidden="true" class="lucide lucide-plus-circle"><circle cx="12" cy="12" r="10"></circle><path d="M8 12h8"></path><path d="M12 8v8"></path></svg> Thêm công việc mới</h3>
+                </div>
+                <form id="form-cong-viec">
+                    <div class="form-row">
+                        <div class="form-group flex-2">
+                            <label for="ten-cong-viec">Tên công việc <span class="required">*</span></label>
+                            <input type="text" id="ten-cong-viec" placeholder="Ví dụ: Thiết kế giao diện Dashboard..." required="">
+                        </div>
+                        <div class="form-group flex-1">
+                            <label for="do-uu-tien">Độ ưu tiên</label>
+                            <select id="do-uu-tien">
+                                <option value="3">Thấp</option>
+                                <option value="2" selected="">Trung bình</option>
+                                <option value="1">Cao</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="mo-ta">Mô tả công việc</label>
+                        <textarea id="mo-ta" rows="2" placeholder="Ghi chú chi tiết về công việc cần làm..."></textarea>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="reset" class="btn btn-secondary">Hủy bỏ</button>
+                        <button type="submit" class="btn btn-primary">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="plus" aria-hidden="true" class="lucide lucide-plus"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>
+                            <span>Thêm công việc</span>
+                        </button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Task List Section -->
+            <section class="task-list-section">
+                <div class="section-header">
+                    <h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="layers" aria-hidden="true" class="lucide lucide-layers"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"></path><path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"></path><path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"></path></svg> Danh sách công việc</h3>
+                    <div class="list-actions">
+                        <select id="sap-xep">
+                            <option value="moi-nhat">Mới nhất</option>
+                            <option value="uu-tien">Độ ưu tiên</option>
+                            <option value="chu-cai">Tên chữ cái</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div id="loading-indicator" class="loading-state hidden">
+                    <div class="spinner"></div>
+                    <span>Đang tải dữ liệu...</span>
+                </div>
+
+                <ul id="danh-sach-cong-viec" class="task-list">
+                    <!-- Task Item 1: High Priority (Active) -->
+                    <li class="task-item" data-priority="high">
+                        <div class="task-checkbox-wrapper">
+                            <input type="checkbox" id="task-1" class="task-checkbox">
+                            <label for="task-1" class="checkbox-custom"></label>
+                        </div>
+                        <div class="task-content">
+                            <div class="task-title-row">
+                                <h4 class="task-title">Học JavaScript nâng cao &amp; viết ứng dụng mẫu</h4>
+                                <span class="badge-priority high">Ưu tiên cao</span>
+                            </div>
+                            <p class="task-desc">Nắm vững các khái niệm Scope, Closure, Promise, Async/Await và ES6 Modules để làm bài tập cuối khóa.</p>
+                            <div class="task-meta">
+                                <span class="meta-item"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="calendar" aria-hidden="true" class="lucide lucide-calendar"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path></svg> Hôm nay</span>
+                                <span class="meta-item"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="hash" aria-hidden="true" class="lucide lucide-hash"><line x1="4" x2="20" y1="9" y2="9"></line><line x1="4" x2="20" y1="15" y2="15"></line><line x1="10" x2="8" y1="3" y2="21"></line><line x1="16" x2="14" y1="3" y2="21"></line></svg> JS Nền tảng</span>
+                            </div>
+                        </div>
+                        <div class="task-actions">
+                            <button class="btn-action btn-edit" title="Sửa công việc"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="edit-3" aria-hidden="true" class="lucide lucide-edit-3"><path d="M13 21h8"></path><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"></path></svg></button>
+                            <button class="btn-action btn-delete" title="Xóa công việc"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="trash-2" aria-hidden="true" class="lucide lucide-trash-2"><path d="M10 11v6"></path><path d="M14 11v6"></path><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path><path d="M3 6h18"></path><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></button>
+                        </div>
+                    </li>
+
+                    <!-- Task Item 2: Medium Priority (Active) -->
+                    <li class="task-item" data-priority="medium">
+                        <div class="task-checkbox-wrapper">
+                            <input type="checkbox" id="task-2" class="task-checkbox">
+                            <label for="task-2" class="checkbox-custom"></label>
+                        </div>
+                        <div class="task-content">
+                            <div class="task-title-row">
+                                <h4 class="task-title">Xây dựng khung xương HTML/CSS cho dự án</h4>
+                                <span class="badge-priority medium">Ưu tiên trung bình</span>
+                            </div>
+                            <p class="task-desc">Sử dụng Flexbox/Grid để hoàn thiện giao diện responsive theo cấu trúc đã phân chia trong spec.</p>
+                            <div class="task-meta">
+                                <span class="meta-item"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="calendar" aria-hidden="true" class="lucide lucide-calendar"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path></svg> Ngày mai</span>
+                                <span class="meta-item"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="hash" aria-hidden="true" class="lucide lucide-hash"><line x1="4" x2="20" y1="9" y2="9"></line><line x1="4" x2="20" y1="15" y2="15"></line><line x1="10" x2="8" y1="3" y2="21"></line><line x1="16" x2="14" y1="3" y2="21"></line></svg> UI/UX</span>
+                            </div>
+                        </div>
+                        <div class="task-actions">
+                            <button class="btn-action btn-edit" title="Sửa công việc"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="edit-3" aria-hidden="true" class="lucide lucide-edit-3"><path d="M13 21h8"></path><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"></path></svg></button>
+                            <button class="btn-action btn-delete" title="Xóa công việc"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="trash-2" aria-hidden="true" class="lucide lucide-trash-2"><path d="M10 11v6"></path><path d="M14 11v6"></path><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path><path d="M3 6h18"></path><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></button>
+                        </div>
+                    </li>
+
+                    <!-- Task Item 3: Low Priority (Completed) -->
+                    <li class="task-item completed" data-priority="low">
+                        <div class="task-checkbox-wrapper">
+                            <input type="checkbox" id="task-3" class="task-checkbox" checked="">
+                            <label for="task-3" class="checkbox-custom"></label>
+                        </div>
+                        <div class="task-content">
+                            <div class="task-title-row">
+                                <h4 class="task-title">Cài đặt môi trường lập trình và Node.js</h4>
+                                <span class="badge-priority low">Ưu tiên thấp</span>
+                            </div>
+                            <p class="task-desc">Cài đặt VS Code, các Extension hữu ích và cài đặt Git CLI phục vụ đẩy code.</p>
+                            <div class="task-meta">
+                                <span class="meta-item"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="calendar" aria-hidden="true" class="lucide lucide-calendar"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path></svg> Đã hoàn thành</span>
+                                <span class="meta-item"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="hash" aria-hidden="true" class="lucide lucide-hash"><line x1="4" x2="20" y1="9" y2="9"></line><line x1="4" x2="20" y1="15" y2="15"></line><line x1="10" x2="8" y1="3" y2="21"></line><line x1="16" x2="14" y1="3" y2="21"></line></svg> Setup</span>
+                            </div>
+                        </div>
+                        <div class="task-actions">
+                            <button class="btn-action btn-edit" title="Sửa công việc" disabled=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="edit-3" aria-hidden="true" class="lucide lucide-edit-3"><path d="M13 21h8"></path><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"></path></svg></button>
+                            <button class="btn-action btn-delete" title="Xóa công việc"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="trash-2" aria-hidden="true" class="lucide lucide-trash-2"><path d="M10 11v6"></path><path d="M14 11v6"></path><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path><path d="M3 6h18"></path><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></button>
+                        </div>
+                    </li>
+
+                    <!-- Task Item 4: High Priority (Completed) -->
+                    <li class="task-item completed" data-priority="high">
+                        <div class="task-checkbox-wrapper">
+                            <input type="checkbox" id="task-4" class="task-checkbox" checked="">
+                            <label for="task-4" class="checkbox-custom"></label>
+                        </div>
+                        <div class="task-content">
+                            <div class="task-title-row">
+                                <h4 class="task-title">Nghiên cứu yêu cầu dự án cuối khóa</h4>
+                                <span class="badge-priority high">Ưu tiên cao</span>
+                            </div>
+                            <p class="task-desc">Đọc kỹ tài liệu mô tả yêu cầu tính năng và rubric chấm điểm của dự án To-Do App.</p>
+                            <div class="task-meta">
+                                <span class="meta-item"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="calendar" aria-hidden="true" class="lucide lucide-calendar"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path></svg> Đã hoàn thành</span>
+                                <span class="meta-item"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="hash" aria-hidden="true" class="lucide lucide-hash"><line x1="4" x2="20" y1="9" y2="9"></line><line x1="4" x2="20" y1="15" y2="15"></line><line x1="10" x2="8" y1="3" y2="21"></line><line x1="16" x2="14" y1="3" y2="21"></line></svg> Spec</span>
+                            </div>
+                        </div>
+                        <div class="task-actions">
+                            <button class="btn-action btn-edit" title="Sửa công việc" disabled=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="edit-3" aria-hidden="true" class="lucide lucide-edit-3"><path d="M13 21h8"></path><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"></path></svg></button>
+                            <button class="btn-action btn-delete" title="Xóa công việc"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="trash-2" aria-hidden="true" class="lucide lucide-trash-2"><path d="M10 11v6"></path><path d="M14 11v6"></path><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path><path d="M3 6h18"></path><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></button>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+        </main>
+    </div>
+
+    <!-- Script to render Lucide Icons -->
+    <script>
+        lucide.createIcons();
+
+
+        const deleteButton = document.querySelector('.btn-delete');
+const taskItem = deleteButton.parentElement.parentElement; // Đi lên 2 cấp để lấy thẻ <li> chứa nút
+    console.log(taskItem);
+    </script>
+
+
+</body></html>

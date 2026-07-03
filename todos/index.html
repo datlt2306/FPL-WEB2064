@@ -146,7 +146,7 @@
                     <span>Đang tải dữ liệu...</span>
                 </div>
 
-                <ul id="danh-sach-cong-viec" class="task-list">
+                <ul id="task-list" class="task-list">
                     <!-- Task Item 1: High Priority (Active) -->
                     <li class="task-item" data-priority="high">
                         <div class="task-checkbox-wrapper">
@@ -246,12 +246,9 @@
     <!-- Script to render Lucide Icons -->
     <script>
         lucide.createIcons();
-
-
-        const deleteButton = document.querySelector('.btn-delete');
-const taskItem = deleteButton.parentElement.parentElement; // Đi lên 2 cấp để lấy thẻ <li> chứa nút
-    console.log(taskItem);
     </script>
+    <script src="./main.js"></script>
+</body>
+</html>
 
-
-</body></html>
+<li data-id="1"></li>

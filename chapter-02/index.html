@@ -13,25 +13,34 @@
 <body>
     <div id="box"></div>
     <ul>
-        <li class="item">item 1
-            <button data-id="1" class="btn-delete">delete</button>
+        <li class="item" data-id="1">item 1
+            <button class="btn-delete">delete</button>
         </li>
-        <li class="item">item 2
-            <button data-id="2" class="btn-delete">delete</button>
+        <li class="item" data-id="2">item 2
+            <button class="btn-delete">delete</button>
         </li>
-        <li class="item">item 3
-            <button data-id="3" class="btn-delete">delete</button>
+        <li class="item" data-id="3">item 3
+            <button class="btn-delete">delete</button>
         </li>
-        <li class="item">item 4
-            <button data-id="4" class="btn-delete">delete</button>
+        <li class="item" data-id="4">item 4
+            <button class="btn-delete">delete</button>
         </li>
     </ul>
     <script>
         const items = document.querySelectorAll('.item');
         items.forEach(function(item){
+            const btn = item.querySelector('.btn-delete');
+            btn.addEventListener('click', function(){
+                console.log(item.dataset.id);
+            })
              
-        })
-       
+        });
+        // const buttons = document.querySelectorAll('.btn-delete');
+        // buttons.forEach((btn) => {
+        //     btn.addEventListener('click', function(){
+        //         console.log(this.parentElement.dataset.id)
+        //     })
+        // })
     </script>
 </body>
 </html>

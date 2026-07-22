@@ -20,7 +20,6 @@
       qty: Number(fields.qty.value),
     };
   }
-  console.log(getFormValues());
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
